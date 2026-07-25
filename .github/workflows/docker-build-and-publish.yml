@@ -34,6 +34,10 @@ on:
         description: "The highest-priority tag assigned to the built image"
         value: ${{ jobs.docker.outputs.image_tag }}
 
+permissions:
+  contents: read
+  packages: write
+
 env:
   DOCKERHUB_NAMESPACE: 'gameonwhales'
   DOCKERHUB_USERNAME: 'abeltramo'
@@ -69,7 +73,13 @@ jobs:
 
           if [[ "${IS_FORK_PR}" == "false" ]]; then
             IS_FORK=false
-            GHCR_NAMESPACE="${{ github.repository_owner }}"
+            owner=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
+            if [[ "${{ github.repository }}" == "games-on-whales/gow" ]]; then
+              GHCR_NAMESPACE="${owner}"
+            else
+              repo_name=$(echo "${{ github.repository }}" | sed 's|.*/||' | tr '[:upper:]' '[:lower:]')
+              GHCR_NAMESPACE="${owner}/${repo_name}"
+            fi
             DOCKERHUB_NAMESPACE="${{ env.DOCKERHUB_NAMESPACE }}"
             ARM64_RUNNER=${{ env.ARM64_RUNNER != '' && env.ARM64_RUNNER || 'ARM64' }}
           else

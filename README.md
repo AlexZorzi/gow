@@ -8,4 +8,4 @@
 A collection of Docker images ready to be used by [Wolf](https://github.com/games-on-whales/wolf) in order to run games
 and apps on a remote host!
 
-Read more about the included images and how to use them in [wildlife](https://games-on-whales.github.io/wildlife/)
+Read more about the included images and how to use them in [wildlife](https://games-on-whales.github.io/wildlife/) Test
