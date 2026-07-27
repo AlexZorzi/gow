@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Eden Emulator
+Exec=/Applications/eden.AppImage --appimage-extract-and-run
+Icon=system-run
+Terminal=false
+Categories=Game;Emulator;
