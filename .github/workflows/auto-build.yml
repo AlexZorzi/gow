@@ -56,6 +56,7 @@ jobs:
       matrix:
         image:
           - { name: faugus-launcher,       docker_path: apps,   platforms: "linux/amd64" }
+          - { name: eden,                  docker_path: apps,   platforms: "linux/amd64" }
       fail-fast: false
     uses: ./.github/workflows/docker-build-and-publish.yml
     with:
@@ -93,6 +94,7 @@ jobs:
       matrix:
         image:
           - { name: faugus-launcher,       docker_path: apps,   platforms: "linux/amd64" }
+          - { name: eden,                  docker_path: apps,   platforms: "linux/amd64" }
       fail-fast: false
     uses: ./.github/workflows/docker-build-and-publish.yml
     with:
